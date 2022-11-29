@@ -1,14 +1,16 @@
 from setuptools import setup
 
 setup(
-    name="dacite",
-    version="1.6.0",
-    description="Simple creation of data classes from dictionaries.",
+    name="dacite2",
+    version="2.0.0",
+    description="Simple creation of data classes from dictionaries (fork of dacite).",
     long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     author="Konrad Hałas",
     author_email="halas.konrad@gmail.com",
-    url="https://github.com/konradhalas/dacite",
+    maintainer="Idan Miara",
+    maintainer_email="idan@miara.com",
+    url="https://github.com/idanmiara/dacite",
     license="MIT",
     classifiers=[
         "Development Status :: 5 - Production/Stable",
