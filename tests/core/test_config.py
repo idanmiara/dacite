@@ -1,6 +1,8 @@
-from dataclasses import dataclass, InitVar
-from datetime import date
+from collections.abc import MutableMapping
 from enum import Enum
+from datetime import date
+from dataclasses import dataclass, InitVar
+from typing import Optional, List, Union
 from typing import Any, Dict, Optional, List, Union
 
 import pytest
@@ -12,6 +14,39 @@ from dacite import (
     UnexpectedDataError,
     StrictUnionMatchError,
 )
+
+
+class TypeHooksMapping(MutableMapping):
+    """
+    Simple mapping implementation which lets us test that Config.type_hooks may
+    be a Mapping, which is more general than the typical use case of being a
+    Dict.
+    """
+    def __init__(self, *args, **kwargs):
+        self.__dict__.update(*args, **kwargs)
+
+    def __getitem__(self, key):
+        if key in self.__dict__:
+            # If a type hook has been specified, use it.
+            return self.__dict__[key]
+        else:
+            # Otherwise, use a dummy type hook which always constructs a 1.
+            return lambda _: 1
+
+    def __setitem__(self, key, value):
+        self.__dict__[key] = value
+
+    def __delitem__(self):
+        if key in self.__dict__:
+            del self.__dict__[key]
+        else:
+            raise IndexError
+
+    def __len__(self):
+        return len(self.__dict__)
+
+    def __iter__(self):
+        return iter(self.__dict__)
 
 
 def test_from_dict_with_type_hooks():
@@ -76,6 +111,21 @@ def test_from_dict_with_generic_dict_type_hooks():
     result = from_dict(X, {"d": {"a": 1}}, Config(type_hooks={Dict: add_b}))
 
     assert result == X(d={"a": 1, "b": 2})
+
+
+def test_type_hook_mapping():
+    @dataclass
+    class X:
+        s: str
+        i: int
+
+    result = from_dict(
+        X,
+        {"s": "TEST", "i": 0},
+        Config(type_hooks=TypeHooksMapping({str: str.lower}))
+    )
+
+    assert result == X(s="test", i=1)
 
 
 def test_from_dict_with_cast():
