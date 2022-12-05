@@ -31,6 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - extract_optional for Optional of Union. #164
 - change Data from Dict to Mapping #159
 - Fix encoding of PKG-INFO file #86
+- `Config` forward_references overriding `get_type_hints()`'s default `globalns`
 
 ## [1.6.0] - 2020-11-30
 

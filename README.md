@@ -1,11 +1,13 @@
-# dacite
+# dacite2
 
-[![Build Status](https://travis-ci.org/konradhalas/dacite.svg?branch=master)](https://travis-ci.org/konradhalas/dacite)
-[![Coverage Status](https://coveralls.io/repos/github/konradhalas/dacite/badge.svg?branch=master)](https://coveralls.io/github/konradhalas/dacite?branch=master)
+[![Build Status](https://travis-ci.org/idanmiara/dacite.svg?branch=master)](https://travis-ci.org/idanmiara/dacite)
+[![Coverage Status](https://coveralls.io/repos/github/idanmiara/dacite/badge.svg?branch=master)](https://coveralls.io/github/idanmiara/dacite?branch=master)
 [![License](https://img.shields.io/pypi/l/dacite.svg)](https://pypi.python.org/pypi/dacite/)
 [![Version](https://img.shields.io/pypi/v/dacite.svg)](https://pypi.python.org/pypi/dacite/)
 [![Python versions](https://img.shields.io/pypi/pyversions/dacite.svg)](https://pypi.python.org/pypi/dacite/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
+
+This is a fork of `dacite`: https://github.com/konradhalas/dacite
 
 This module simplifies creation of data classes ([PEP 557][pep-557])
 from dictionaries.
@@ -15,12 +17,12 @@ from dictionaries.
 To install dacite, simply use `pip`:
 
 ```
-$ pip install dacite
+$ pip install dacite2
 ```
 
 ## Requirements
 
-Minimum Python version supported by `dacite` is 3.7.
+Minimum Python version supported by `dacite2` is 3.7.
 
 ## Quick start
 
@@ -440,7 +442,7 @@ first within an issue.
 Clone `dacite` repository:
 
 ```
-$ git clone git@github.com:konradhalas/dacite.git
+$ git clone git@github.com:idanmiara/dacite.git
 ```
 
 Create and activate virtualenv in the way you like:
@@ -575,7 +577,9 @@ Follow `dacite` updates in [CHANGELOG][changelog].
 ## Authors
 
 Created by [Konrad Hałas][halas-homepage].
+Maintained by [Idan Miara][miara-email].
 
 [pep-557]: https://www.python.org/dev/peps/pep-0557/
 [halas-homepage]: https://konradhalas.pl
-[changelog]: https://github.com/konradhalas/dacite/blob/master/CHANGELOG.md
+[miara-email]: idan@miara.com
+[changelog]: https://github.com/idanmiara/dacite/blob/master/CHANGELOG.md

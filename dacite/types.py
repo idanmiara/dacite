@@ -51,8 +51,8 @@ def transform_value(
     return value
 
 
-def get_data_class_hints(data_class: Type[T], globalns: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
-    type_hints = get_type_hints(data_class, globalns=globalns)
+def get_data_class_hints(data_class: Type[T], localns: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    type_hints = get_type_hints(data_class, localns=localns)
     for attr, type_hint in type_hints.items():
         if is_init_var(type_hint):
             type_hints[attr] = extract_init_var(type_hint)

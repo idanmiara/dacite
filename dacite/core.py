@@ -45,7 +45,7 @@ def from_dict(data_class: Type[T], data: Data, config: Optional[Config] = None) 
     post_init_values: DictData = {}
     config = config or Config()
     try:
-        data_class_hints = get_data_class_hints(data_class, globalns=config.forward_references)
+        data_class_hints = get_data_class_hints(data_class, localns=config.forward_references)
     except NameError as error:
         raise ForwardReferenceError(str(error))
     data_class_fields = get_fields(data_class)
